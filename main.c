@@ -53,7 +53,7 @@ int main() {
 
             //work in progress identification
             //printf(identification);
-            
+
             scanf("%d", &choix);
 
 
