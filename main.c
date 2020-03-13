@@ -16,6 +16,7 @@ int main() {
     char identification[24];
     int recommencer=0;
 
+
         do {
             printf("______         _          _  _  _         _   _                      _       \n"
                    "| ___ \\       | |        (_)| || |       | \\ | |                    | |      \n"
@@ -59,7 +60,7 @@ int main() {
 
             if (choix == 1) {
                 system("cls");
-                printf("\nWork in progress\n");
+                printf("\nWORK IN PROGRESS\n");
             } else if (choix == 2) {
                 system("cls");
                 printf("Aide:\n");
