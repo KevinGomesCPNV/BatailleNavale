@@ -1,9 +1,9 @@
 /*
  * Titre : Bataille Navale
  * Auteur : Kevin Gomes
- * Date : 18 mars 2020
+ * Date : 25 mars 2020
  * Description : Programme effectué dans le cadre du MA-20 et ICT-114 du CPNV permettant de jouer à la bataille navale en solo avec une grille de base
- * Version : 0.1
+ * Version : "1.0"
  */
 
 
@@ -39,49 +39,72 @@ void jeux(){
             {1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
     };
 
-    // affichage de la carte
-    printf("\nVoici la carte\n");
-    printf("Vous devez abattre tous les bateaux\n");
-    printf("Bonne chance\n\n");
-    // affichage des nombres du tableau horizontalement
-    printf("  1   2   3   4   5   6   7   8   9   10   \n");
-    for (int i = 0; i < 41; ++i)
-    {
-        printf("═");
-    }
+            //boucle infini
+            while (1){
 
-    printf("\n");
-    for (int ligne = 0; ligne < 10; ++ligne)
-    {
-        for (int colonne = 0; colonne < 10; ++colonne)
-        {
-            if (carte[ligne][colonne] == 1)
-            {
-                printf("║ %c ", val);
-            } else {
-                printf("║   ");
+                //commande permettant de vider la page
+                system("cls");
+
+                // affichage de la carte
+                printf("\nVoici la carte\n");
+                printf("Vous devez abattre tous les bateaux\n");
+                printf("Bonne chance\n\n");
+
+            // affichage des nombres du tableau horizontalement
+            printf("  1   2   3   4   5   6   7   8   9   10   \n");
+
+                // affichage de la carte
+            for (int i = 0; i < 41; ++i) {
+                printf("═");
             }
-        }
-        printf("║\n");
-        for (int i = 0; i < 41; ++i)
-        {
-            printf("═");
-        }
-        printf("\n");
-    }
 
-    //printf("Indiquez une ligne horizontale");
-    //scanf("%d",&ligneHor);
-    //printf("Indiquez une ligne verticale");
-    //scanf("%d",&ligeVer);
+            printf("\n");
+            for (int ligneHor = 0; ligneHor < 10; ++ligneHor) {
+                for (int ligneVer = 0; ligneVer < 10; ++ligneVer) {
+                    if (carte[ligneHor][ligneVer] == 9) {
+                        printf("║ %c ", val);
+                    } else {
+                        printf("║   ");
+                    }
+                }
+                printf("║\n");
+                for (int i = 0; i < 41; ++i) {
+                    printf("═");
+                }
+                printf("\n");
+            }
 
+            do {
+                printf("\nIndiquez une ligne horizontale:  ");
+                scanf("%d", &ligneHor);
+                if (ligneHor > 10) {
+                    printf("\nEntrez une valeure valable.(de 1 à 10)\n");
+                }
 
-    //Affiche le message "Appuyer sur une touche pour continuer"
-    system("pause");
+                //si la valeur est au dessus de 10 ou pas valide alors cela redemande une nouvelle ligne horizontale
+            } while (ligneHor < 1 || ligneHor > 10);
 
-    //Retourne dans le menu de base
-    menuDeBase();
+            do {
+                printf("\nIndiquez une ligne verticale:  ");
+                scanf("%d", &ligneVer);
+                if (ligneVer > 10) {
+                    printf("\nEntrez une valeure valable.(de 1 à 10)\n");
+                }
+            } while (ligneVer < 1 || ligneVer > 10);
+            //partie qui demande la ligne et la colonne à l'utilisateur
 
+            //partie qui vérifie si un bateau a ete touché ou pas
+
+            if (carte[ligneHor - 1][ligneVer - 1] == 1) {
+                carte[ligneHor - 1][ligneVer - 1] = 2;
+                printf("\n\nTouché!\n");
+                //avant de redemander à l'utilisateur de nouvelles valeures, le programme attends 2s
+                Sleep(1500);
+            } else {
+                printf("\n\nDommage loupé\n");
+                Sleep(1500);
+            }
+            }
 
 }
 
@@ -190,7 +213,10 @@ void menuDeBase() {
             break;
         //Commande qui fait quitter le programme
         case 4: system("exit");
-
+            break;
+        default:
+            printf("Veuillez choisir un menu avec les nombres");
+            break;
     }
 }
 
