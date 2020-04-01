@@ -98,7 +98,7 @@ void jeux(){
             if (carte[ligneHor - 1][ligneVer - 1] == 1) {
                 carte[ligneHor - 1][ligneVer - 1] = 2;
                 printf("\n\nTouché!\n");
-                //avant de redemander à l'utilisateur de nouvelles valeures, le programme attends 2s
+                // avant de redemander à l'utilisateur de nouvelles valeures, le programme attends 2s
                 Sleep(1500);
             } else {
                 printf("\n\nDommage loupé\n");
