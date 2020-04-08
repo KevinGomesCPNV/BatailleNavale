@@ -58,6 +58,7 @@ void jeux(){
                 printf("═");
             }
 
+            //création du tableau
             printf("\n");
             for (int ligneHor = 0; ligneHor < 10; ++ligneHor) {
                 for (int ligneVer = 0; ligneVer < 10; ++ligneVer) {
